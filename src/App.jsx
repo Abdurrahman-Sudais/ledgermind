@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import site from './content.js';
+import {Count, Cycle, Marquee, Stats, Words} from './Flow.jsx';
 import {COMPANY, bank, ledger, naira, receipts, receivables, recurring} from './data.js';
 import {categorise, closingBalance, discrepancies, forecast, reconcile} from './engine.js';
 import {ACROSS, SERVICES, STAGES, WHY} from './aws.js';
@@ -45,6 +46,9 @@ function Header() {
 
 const PAIRS = REC.matches.slice(0, 5);
 
+const CYCLE = ["accounting firms", "SMEs", "corporate finance teams"];
+const STATS = [[24, "bank lines in the sample month"], [15, "ledger entries reconciled"], [4, "kinds of discrepancy checked"], [13, "weeks of cash-flow forecast"]];
+
 function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
@@ -52,6 +56,7 @@ function Hero() {
         <p className="eyebrow" data-r>AI-assisted accounting · for firms, SMEs and finance teams</p>
         <h1 id="hero-title"><Split text="Intelligent accounting." /><Split text="Clearer financial decisions." className="it" /></h1>
         <p className="lede" data-r>{site.about}</p>
+        <p className="fcy" data-r style={{'--d': '200ms'}}><Cycle lead="Built for" items={CYCLE} /></p>
         <div className="ctas" data-r>
           <a className="btn" href="#demo" data-magnetic data-cursor="Book">Request a demo</a>
           <a className="btn ghost" href="/app" data-cursor="Try it">Open the workspace</a>
@@ -206,13 +211,12 @@ function Technology() {
 }
 
 function Team() {
-  const p = site.team[0];
   return (
     <section className="sec" id="team" aria-labelledby="team-title">
-      <div className="team" data-r>
+      <div className="team-head"><p className="eyebrow">Founding team</p><h2 id="team-title">The people building {site.name}.</h2></div><div className="team-list">{site.team.map((p, i) => (<div key={p.name} style={{'--d': `${i * 90}ms`}} className="team" data-r>
         <span className="av" aria-hidden="true">{p.initials}</span>
-        <div><p className="eyebrow">Founder</p><h2 id="team-title">{p.name}</h2><p>{p.bio}</p><ul className="tags">{p.focus.map((f) => <li key={f}>{f}</li>)}</ul></div>
-      </div>
+        <div><p className="eyebrow">{p.role}</p><h3 className="tname">{p.name}</h3><p>{p.bio}</p><ul className="tags">{p.focus.map((f) => <li key={f}>{f}</li>)}</ul></div>
+      </div>))}</div>
     </section>
   );
 }
@@ -270,7 +274,7 @@ function Footer() {
 }
 
 function Home() {
-  return (<><Hero /><Tape /><Workflow /><Features /><Forecast /><Who /><Pricing /><Technology /><Team /><Demo /><Faq /><Contact /></>);
+  return (<><Hero /><Tape /><Stats items={STATS} /><Workflow /><Features /><Forecast /><Who /><Pricing /><Technology /><Team /><Demo /><Faq /><Contact /></>);
 }
 
 const LEGAL = {

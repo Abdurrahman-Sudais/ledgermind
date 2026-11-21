@@ -9,6 +9,8 @@ const site = {
   email: 'daniel@ledgermind.top',
   team: [
     {name: 'Daniel Chukwudi', role: 'Founder', initials: 'DC', bio: 'Daniel founded LedgerMind to give accountants and finance teams one workflow from bank line to cash-flow forecast — so month-end is spent on judgement, not matching rows in spreadsheets. Daniel leads product, customers and every pilot.', focus: ['Product', 'Accounting workflows', 'Customer pilots']},
+    {name: "Funmilayo Ajayi", role: "Co-founder", initials: "FA", bio: "Funmilayo leads accounting-firm partnerships and customer success at LedgerMind: onboarding pilot practices, shaping the month-end workflow with bookkeepers and turning reviewer feedback into product changes.", focus: ["Accounting partnerships", "Pilot onboarding", "Month-end workflow"]},
+    {name: "Obinna Nwachukwu", role: "CTO", initials: "ON", bio: "Obinna leads engineering: bank and ledger imports, transaction categorisation, the reconciliation and discrepancy rules, cash-flow forecasting and the AWS platform it runs on.", focus: ["Platform architecture", "Reconciliation engine", "AWS infrastructure"]},
   ],
   app: {
     title: 'Month-end workspace',
